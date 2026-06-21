@@ -1,0 +1,16 @@
+[safe]
+	directory = *
+	directory = *
+[credential]
+	helper = cache --timeout=360000
+[user]
+	email = jlorquin@gmail.com
+	name = jlorquin
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[alias]
+	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
