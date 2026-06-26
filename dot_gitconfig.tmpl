@@ -15,5 +15,12 @@
 	helper =
 	helper = !{{ $gh }} auth git-credential
 {{- end }}
+{{- if eq .chezmoi.hostname "movetosevillawebserver" }}
+# OCI always-on box: the local SSH key (~/.ssh/id_ed25519) is passphrase-protected,
+# so non-interactive git pushes can't decrypt it. Rewrite SSH GitHub remotes to HTTPS
+# so they authenticate via the gh credential helper (no passphrase prompt) instead.
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+{{- end }}
 [alias]
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
