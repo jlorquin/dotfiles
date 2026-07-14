@@ -78,3 +78,7 @@ if [[ -z "$SSH_CONNECTION" ]]; then
     fi
     unset env
 fi
+
+# Multi-account Claude Code (switcher: ~/.claude/commands/claude-acct.sh)
+cca() { ~/.claude/commands/claude-acct.sh "$@"; }        # cca list | whoami | <name> | save <n> | add <n>
+cx()  { ~/.claude/commands/claude-acct.sh "$1" && shift && claude "$@"; }  # switch account + launch
